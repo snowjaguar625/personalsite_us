@@ -656,7 +656,7 @@
                 <div class="col-lg-8">
                     <div class="contact-form text-center">
                         <div id="success"></div>
-                        <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                        <form name="sentMessage" id="contactForm" >
                             <div class="form-row">
                                 <div class="control-group col-sm-6">
                                     <input type="text" class="form-control p-4" id="name" name="name" placeholder="Your Name"
@@ -671,7 +671,7 @@
                             </div>
                             <div class="control-group">
                                 <input type="text" class="form-control p-4" id="subject" name="subject" placeholder="Subject"
-                                    required="required" data-validation-required-message="Please enter a subject" />
+                                    data-validation-required-message="Please enter a subject" />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group">
@@ -770,6 +770,10 @@
             document.getElementById('contactForm')
             .addEventListener('submit', function(event) {
             event.preventDefault();
+
+            if($('#email').val() == '') {
+                toastr.warning("Enter your email!")
+            }
 
             btn.value = 'Sending...';
 
