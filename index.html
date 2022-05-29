@@ -22,8 +22,7 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" />
-
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -681,8 +680,7 @@
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div>
-                                <button class="btn btn-outline-primary" type="submit" id="sendMessageButton">Send
-                                    Message</button>
+                                <input class="btn btn-outline-primary" type="submit" id="sendMessageButton" value="Send Message"></input>
                             </div>
                         </form>
                     </div>
@@ -741,17 +739,36 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script type="text/javascript"
     src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   
     <script type="text/javascript">
+        $(document).ready(function(){
+
+            toastr.options = {
+				'closeButton': true,
+				'debug': false,
+				'newestOnTop': false,
+				'progressBar': false,
+				'positionClass': 'toast-top-right',
+				'preventDuplicates': false,
+				'showDuration': '1000',
+				'hideDuration': '1000',
+				'timeOut': '5000',
+				'extendedTimeOut': '1000',
+				'showEasing': 'swing',
+				'hideEasing': 'linear',
+				'showMethod': 'fadeIn',
+				'hideMethod': 'fadeOut',
+			}
         emailjs.init('vUSwtJzywJr3MifEF');
 
         const btn = document.getElementById('sendMessageButton');
 
             document.getElementById('contactForm')
             .addEventListener('submit', function(event) {
+                toastr.info('Sent Successfully!', 'dfd')
             event.preventDefault();
 
             btn.value = 'Sending...';
@@ -768,6 +785,8 @@
                 toastr.error("Send Failed!")
                 });
             });
+        })
+        
     </script>
 </body>
 
