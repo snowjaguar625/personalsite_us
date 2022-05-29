@@ -736,7 +736,7 @@
 
     <!-- Contact Javascript File -->
     <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
+    <!-- <script src="mail/contact.js"></script> -->
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
@@ -762,11 +762,9 @@
             emailjs.sendForm(serviceID, templateID, this)
                 .then(() => {
                 btn.value = 'Send Message';
-                alert('Sent!');
                 toastr.success('Sent Successfully!')
                 }, (err) => {
                 btn.value = 'Send Message';
-                alert(JSON.stringify(err));
                 toastr.error("Send Failed!")
                 });
             });
